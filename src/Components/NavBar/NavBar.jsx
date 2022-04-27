@@ -1,13 +1,14 @@
 import Container from 'react-bootstrap/Container'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Button, Form, FormControl } from 'react-bootstrap';
+import './NavBar.css'
 
 const NavBar = (props) => {
 
 
     return ( 
         <div>
-           <Navbar bg="light" expand="lg">
+           <Navbar bg="light" expand="lg" className='fixed-top'>
                 <Container fluid>
                     <Navbar.Brand href="#">Music Library</Navbar.Brand>
 
