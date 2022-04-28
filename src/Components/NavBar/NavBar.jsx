@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Button, Form, FormControl } from 'react-bootstrap';
 import './NavBar.css'
 
-const NavBar = (props) => {
+const NavBar = ({ setSearch }) => {
 
 
     return ( 
@@ -12,10 +12,12 @@ const NavBar = (props) => {
                 <Container fluid>
                     <Navbar.Brand href="#">Music Library</Navbar.Brand>
 
-                    <Form className="d-flex">
+                    <Form className="d-flex" onChange={
+                        (event)=>{
+                            setSearch(event.target.value)}}>
                         <FormControl
                         type="search"
-                        placeholder="Search"
+                        placeholder="Search by artist"
                         className="me-2"
                         aria-label="Search"
                         />

@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 function App() {
 
   const [songs, setSongs] = useState([]);
+  const [search, setSearch] = useState('')
 
   useEffect(()=>{
     getAllSongs();
@@ -24,12 +25,12 @@ function App() {
   }
 
   return (
-    <div>
-      <div>
-        <NavBar fixed="top"/>
+    <div className='container-fluid'>
+      <div className='row'>
+        <NavBar className='navbar' fixed="top" setSearch={setSearch}/>
       </div>
-      <div>
-        <DisplayMusic songs={songs} />
+      <div className='row'>
+        <DisplayMusic className='table' songs={songs} search={search}/>
       </div>
     </div>
   );

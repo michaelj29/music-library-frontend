@@ -3,9 +3,22 @@ import Table from 'react-bootstrap/Table'
 
 
 
-const DisplayMusic = (props) => {
+const DisplayMusic = ({songs, search}) => {
 
+    const globalIgnoreRegex = new RegExp(search, 'gi')
 
+    let songSearch = songs.filter((song) =>{
+        if(globalIgnoreRegex.test(song.artist) === true || 
+            globalIgnoreRegex.test(song.title) === true || 
+            globalIgnoreRegex.test(song.album) === true || 
+            globalIgnoreRegex.test(song.release_date) === true ||
+            globalIgnoreRegex.test(song.genre) === true){
+            return true;
+        } else {
+            return false;
+        }
+    })
+ 
 
     return ( 
         <div>
@@ -21,7 +34,7 @@ const DisplayMusic = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.songs.map((song, index)=> {
+                    {songSearch.map((song, index)=> {
                         return (
                             <tr key={index + 1}>
                                 <th>{song.id}</th>
