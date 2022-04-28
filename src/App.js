@@ -11,7 +11,8 @@ function App() {
 
   const [songs, setSongs] = useState([]);
   const [search, setSearch] = useState('')
-
+  // const [addSong, setAddSong] = useState([{title: 'Sample Song', artist: 'Sample Artist', album: 'Sample Album', release_date: '2020-03-15', genre: 'hip-hop',}])
+  
   useEffect(()=>{
     getAllSongs();
   }, [])
@@ -21,7 +22,19 @@ function App() {
       let response = await axios.get('http://127.0.0.1:8000/music/');
       setSongs(response.data)
     } catch (err) {
-      console.log("Error in getAllSongs function in DisplayMusic.jsx file")
+      console.log('Error in getAllSongs function in DisplayMusic.jsx file')
+    }
+  }
+
+  async function postSong(newSong){
+    try {
+        let response = await axios.post('http://127.0.0.1:8000/music/', newSong);
+        if(response.status === 201){
+          await getAllSongs()
+        }
+    } catch (err) {
+      console.log('Error in postSong function in DisplayMusic.jsx file')
+      
     }
   }
 
@@ -33,8 +46,8 @@ function App() {
       <div className='row'>
         <DisplayMusic className='table' songs={songs} search={search}/>
       </div>
-      <div className='row'>
-        <AddSong />
+      <div className='song-form'>
+        <AddSong fixed="bottom"  postSong={postSong}/>
       </div>
     </div>
   );
