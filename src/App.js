@@ -4,6 +4,7 @@ import './App.css';
 import DisplayMusic from './Components/DisplayMusic/DisplayMusic';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import AddSong from './Components/AddSong/AddSong';
 
 
 function App() {
@@ -31,6 +32,9 @@ function App() {
       </div>
       <div className='row'>
         <DisplayMusic className='table' songs={songs} search={search}/>
+      </div>
+      <div className='row'>
+        <AddSong />
       </div>
     </div>
   );
