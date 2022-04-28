@@ -11,7 +11,6 @@ function App() {
 
   const [songs, setSongs] = useState([]);
   const [search, setSearch] = useState('')
-  // const [addSong, setAddSong] = useState([{title: 'Sample Song', artist: 'Sample Artist', album: 'Sample Album', release_date: '2020-03-15', genre: 'hip-hop',}])
   
   useEffect(()=>{
     getAllSongs();
